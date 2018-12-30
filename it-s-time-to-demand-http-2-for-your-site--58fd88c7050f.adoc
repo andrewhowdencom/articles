@@ -1,0 +1,144 @@
+= It’s time to demand HTTP/2 for your site.
+Andrew Howden <hello@andrewhowden.com>
+2015-12-30
+
+image:https://cdn-images-1.medium.com/max/800/1*hW-xs5Z25QDDd2PzTcpy0w.png[image]
+
+In May 2015 the first major revision of the HTTP spec in 14 years was finalized as RFC 7540 (IETF, 2015). This post is
+intended to help merchants understand the implications of this revision and how it affects their bottom line.
+
+TL, DR (Too long, didn’t read).
+
+* You should upgrade to HTTP/2
+* Sooner is better
+* Some users don’t support it, but they will. Investing in HTTP/1.1 optimized design is short-sighted, and will have
+  to be undone in future regardless.
+
+HTTP (or Hypertext Transfer Protocol) is the protocol governing how your customers browsers interact with your 
+e-commerce store. HTTP/2 makes several architectural changes in this connection such as:
+
+* Making page loads faster
+* Making it possible your development team to optimize your website for good development _and_ good performance.
+
+HTTP/2 started life SPDY, a protocol developed by Google following a series of experiments designed to make the web
+faster. Following the release of SPDY it was implemented in both servers and browsers and rapidly became a defacto 
+standard. However, rather than allow the unofficial SPDY spec to determine the conversation around and future of
+the web, the IETF started work on creating a new HTTP spec, including many more parties in the conversation. The 
+result is HTTP/2, a more thoughtfully constructed, polished protocol than either SPDY or HTTP/1.1.
+
+== What are the advantages?
+
+HTTP/2 allows us to make several changes to the way we architect our web applications, such as:
+
+* Reduce the amount of data transmitted to our users (especially important for mobile).
+* Make more efficient use of the network connection.
+* Allow browsers to prioritize certain assets, decreasing page render time.
+* Allow better quality and more innovative application development.
+
+== Why should you care?
+
+HTTP/2 has been implemented by Google and Akamai and will shortly be implemented by CloudFlare and MaxCDN. These
+companies constitute a major chunk of internet traffic and have vast experience optimizing for and developing tools
+around increased performance. In order to take part in the next generation of web development HTTP/2 will be a 
+requirement.
+
+Implementing it sooner will reduce the amount of useless time (and cash) spent optimizing for HTTP/1.1.
+
+If you’re curious, you can check out exactly who is using HTTP/2 (or QUIC, or SPDY) using the Chrome net-internals tool in the Chrome browser
+
+chrome://net-internals/#http2
+
+== What are the risks?
+
+=== It’s new, but battle tested.
+
+While HTTP/2 is a new technology it is based on the SPDY protocol, implemented in
+popular web servers (Apache, NGINX et al.) and widely deployed. However, the implementations in both
+Apache and NGINX are still young and developers may face challenges with browser compatibility.
+
+=== Support is growing, but not 100%.
+
+Currently, ~69% of all users support HTTP/2. Most notably, users who use the 
+core browser for Android (not Chrome), iOS users who haven’t yet upgraded to iOS9, and Windows users who haven’t
+upgraded to Windows 10 all cannot access a website over HTTP/2. However, most servers (including Apache and NGINX) serve the
+website over both HTTP/1.1 and HTTP/2. This means that, while your users won’t experiences the benefits of HTTP/2,
+they will still be able to access the site as they do now.
+
+The following browsers / devices support HTTP/2:
+
+* Chrome (Android, Windows 10, Windows 8, Linux)
+* Safari (iOS 9, Safari 10.11+)
+* Edge (Windows 10)
+* IE 11 (Windows 10)
+* Opera (Windows, Linux)
+* Firefox (Windows, Linux)
+
+This invites the question: Should we optimise for HTTP/2? My option is yes. Most browsers are “Evergreen” (or
+self-updating), and the most recent versions of all browsers (except IE) all implement HTTP/2. While users who
+are still using older browsers only compatible with HTTP/1.1 will be served a slower version of your website, a 
+rapidly growing majority of users will be using HTTP/2 and not optimizing for these users strikes me as a little
+short sighted.
+
+=== It costs money.
+
+As with any new technology, there’s a cost to upgrade. It’s a much smaller cost than most development processes,
+and should be as simple as upgrading the server your website is being served off. It may take time for your 
+development team to understand the HTTP/2 architecture well enough to take full advantage but the sooner you start
+this process the cheaper it will be in the long run. 
+
+== How to start the conversation
+
+Contrary to the title, there are things that you need to ensure are implemented before you consider HTTP/2. Firstly,
+HTTP/2 requires SSL — If your website does not have SSL everywhere, implement that as soon as possible (if only 
+for the PageRank bump) [#]_. Secondly, although HTTP/2 is pretty cool, if you’re not having “how fast is my site” 
+conversations with your development team you’d be better off staring there. 
+The https://developers.google.com/speed/pagespeed/insights/["PageSpeed Insights"] tool is a good
+place to get some insight.
+
+It’s best to start the conversation with “What effect does site speed have on my customers?”. If you’re achieving a 
+“time to glass” of 1s over HTTPS on 4G connections then, congratulations! You probably don’t need to do anything. 
+If you don’t, it’s a worthy goal to strive for.
+
+If you’re not sure how fast your site is, the Google PageSpeed Insights tool can be super helpful to determine 
+whether your website is following the “best practices” of the day:
+
+- https://developers.google.com/speed/pagespeed/insights/
+
+If you’re otherwise pretty sure that your speed ducks are in a row, place a ticket, schedule a phone call or 
+otherwise start the conversation with “What is HTTP/2, and should we implement it”. I suggest you read a little 
+beyond this article (the HTTP/2 FAQ in the references is a good place to start) before you start this conversation
+as the technology is new and you might catch your developers a little off guard.
+
+Let me know what your experiences with H/2. Something awful backfired? I’d love to know about it — It’ll make me 
+a better developer (clearly there’s something I didn’t know about).
+
+== Thanks
+
+Thanks to Martin Howden for his invaluable feedback and Jackie Mavridis for her patient review.
+
+* Shuler, R. (2015). How Does the Internet Work?. Web.stanford.edu. Retrieved 27 September 2015, from
+  http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm#http
+* Ietf.org,. (2015). Retrieved 27 September 2015, from https://www.ietf.org/rfc/rfc2616.txt  +
+  IETF (2015). RFC 7540 — Hypertext Transfer Protocol Version 2 (HTTP/2).
+  Retrieved 27 September 2015, from https://tools.ietf.org/html/rfc7540
+* Blog.httpwatch.com,. (2015). A Simple Performance Comparison of HTTPS, SPDY and HTTP/2 | HttpWatch 
+  BlogHttpWatch Blog. Retrieved 27 September 2015, from
+  https://blog.httpwatch.com/2015/01/16/a-simple-performance-comparison-of-https-spdy-and-http2/
+* Google Docs,. (2015). HTTP/2 is here, let’s optimize! — Velocity SC 2015. Retrieved 27 September 2015, from
+  https://docs.google.com/presentation/d/1r7QXGYOLCh4fcUq0jDdDwKJWNqWK1o4xMtYpKZCJYjM/present?slide=id.p19
+* Http2.github.io,. (2015). HTTP/2 Frequently Asked Questions. Retrieved 27 September 2015, from
+  https://http2.github.io/faq/#whats-the-relationship-with-spdy
+* Dev.chromium.org,. (2015). SPDY: An experimental protocol for a faster web — The Chromium Projects. 
+  Retrieved 27 September 2015, from http://dev.chromium.org/spdy/spdy-whitepaper
+* Hello HTTP/2, G. (2015). Hello HTTP/2, Goodbye SPDY. Chromium Blog. Retrieved 27 September 2015, from
+  http://blog.chromium.org/2015/02/hello-http2-goodbye-spdy-http-is_9.html
+* GitHub,. (2015). icing/mod_h2. Retrieved 27 September 2015,
+  from https://github.com/icing/mod_h2
+* NGINX,. (2015). NGINX Open Source 1.9.5 Released with HTTP/2 Support. Retrieved 27 September 2015, from
+  https://www.nginx.com/blog/nginx-1-9-5
+* Caniuse.com,. (2015). Can I use… Support tables for HTML5, CSS3, etc. Retrieved 27 September 2015, from
+  http://caniuse.com/#feat=http2
+* Benfield, C. (2015). HTTP/2 Picks Up Steam: iOS 9. Lukasa’s Echochamber. Retrieved 28 September 2015, from
+  https://lukasa.co.uk/2015/06/HTTP2_Picks_Up_Steam_iOS9/
+* signal, H. (2015). HTTPS as a ranking signal. Official Google Webmaster Central Blog. Retrieved 27 September 2015,
+  from http://googlewebmastercentral.blogspot.com.au/2014/08/https-as-ranking-signal.html
