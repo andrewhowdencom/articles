@@ -1,0 +1,222 @@
+= The Duality of manufacturing psychological safety: A story about the hazards of business vs people management
+
+I think a lot about the human side of software development. My background into software development was not a
+traditional one; instead falling into it through a combination of an absurd amount of luck, an affinity with
+computers and the premature end of my previous career as fitness coach.
+
+One of the areas in which I am most interested is in the area of "disaster management", "incident response",
+"post mortems" -- any sort of crisis management. It's through this study, and the excellent Google SRE and team
+management books that I came across the notion of psychological safety. Wikipedia defines it as follows:
+
+[quote, https://en.wikipedia.org/wiki/Psychological_safety]
+____
+Psychological safety is a shared belief that the team is safe for interpersonal risk taking. It can be defined
+as "being able to show and employ one's self without fear of negative consequences of self-image, status or
+career".
+____
+
+The examples I have seen personally are:
+
+- A team member or colleague makes a serious mistake. How long before they report it, if at all?
+- If a team member sees something that they think is morally or economically reprehensible, do they speak up?
+- How much of a risk is an employee willing to take, given that it could reflect badly on them?
+
+In the scenarios above and if I am taking the risk, psychological safety is how much I trust my teammates will
+factor in my intentions, empathize with my situation and attempt to make judgements upon my actions based on
+what I am going through, rather than merely on the objective outcomes.
+
+== Fostering a safe work environment
+
+The literature surrounding psychological safety indicates that its perhaps the most important factor in predicting
+"high performance" teams. Google's https://rework.withgoogle.com/blog/five-keys-to-a-successful-google-team/[reWork
+study] has it at the 1st place and 
+https://blog.ted.com/vulnerability-is-the-birthplace-of-innovation-creativity-and-change-brene-brown-at-ted2012/[Brené
+Brown calls it "the birthplace of innovation, creativity and change”]. The standing practice for the failure analysis
+process terms "post mortems" is to have it "blameless"; to deliberately not attempt to find fault with a single person
+or team but rather consider the entire process for analysis, treating human action as an emergent property of the
+social system.
+
+Given this literature surely fostering psychological safety should be among managerial and C level staffs highest
+priorities! Indeed, we see that some companies are embracing this cultural change, but even those chief among them
+indicate that such an understanding was hard to come to. To quote from the reWork study:
+
+[quote, https://rework.withgoogle.com/blog/five-keys-to-a-successful-google-team/ ]
+____
+We were pretty confident that we'd find the perfect mix of individual traits and skills necessary for a stellar 
+team -- take one Rhodes Scholar, two extroverts, one engineer who rocks at AngularJS, and a PhD. Voila. Dream team 
+assembled, right?
+
+We were dead wrong. Who is on a team matters less than how the team members interact, structure their work, and view
+their contributions. So much for that magical algorithm.
+____
+
+It is an intuitively paradoxical understanding that to get the best out of people, we must remove some of the ways in
+which we otherwise provide accountability to our teams. Rather than falling back to criticism and punitive
+consequences to approach our teams with an intent to understand.
+
+However, I would propose that there is a fundamental dichotomy between developing a highly efficient organisation
+and developing a psychological safe one. In many cases, I think our organisations are fundamentally geared to remove
+psychological safety.
+
+== Efficient → good... mostly.
+
+As we exist in a business, and particularly as software engineers we're forever under pressure to make ourselves more
+efficient. A combination of the massive gains in efficiency that IT sometimes brings and the inherently bespoke nature
+of software engineering means that software engineers are rare, and software engineers that excel rarer still. Those
+that can be found are tremendously expensive.
+
+Accordingly, we're always on the lookout for ways to reduce the ongoing cost of software. Things like:
+
+- Code reuse
+- Testing
+- Observability
+- Automation
+- Resilience Engineering
+
+Are all about reducing the level of effort required to design and test new features, find and resolve issues and 
+maintain production systems. Our race is against the clock.
+
+In my experience efficiency gains are usually found incrementally as developers get more used to a given software
+environment, more familiar with tools or more adept and unpacking and expressing problems as code. A pattern is 
+identified, and problems are generally pushed towards being solved in that pattern. For example, in a professional 
+context I would probably not want to implement a web service in `C++`, as I am far faster in PHP. Instead, I 
+would look for a way to solve a given problem in PHP.
+
+Over time the number of solutions known within a development team gets larger, and the need to innovate gets
+smaller. This is a good thing; teams that are very experienced and knowledgable are able to solve a large number
+of problems more quickly and easily than teams who are not. However, there is a nasty side effect to this
+increased efficiency, and decreased innovation.
+
+As a team improves its efficiency, those who depend on that team become accustomed to this new, increased team 
+throughput. Decisions that jeopardize this throughput start to become tacitly discouraged  in favour of "safer"
+decisions. 
+
+This works in conjunction with the guaranteed change inherent in any organisation:
+
+- Team members joining, leaving, having children or getting sick
+- Upstream providers going out of business or being purchased out
+- Other businesses selling new, and perhaps better services
+- Political instability
+- Natural disaster
+
+Change over any length of time is a statistical certainty and the primary cause of failure, but the more 
+efficient a team becomes the less it  can "afford" that failure. This combination of pressures over a length of time
+can destroy psychological safety.
+
+If failure cannot be tolerated within a team, employees compensate by taking decisions that they feel are safer or at 
+least will not reflect badly on them. Consumers of a team who are used to a given level of efficiency might raise 
+their ire when told a given project is over time and budget. Team members might not be drawn to have conversations 
+that could point to systematic issues as they will personally suffer the consequences of discovering such issues.
+
+One day a set of circumstances arises that lines up perfectly to exploit each of these half truths. A product will
+be dramatically over budget, a production system will fail or any other catastrophe - the direct result of a set
+of defensible, but incorrect decisions. 
+
+The increase in efficiency has directly led to an inefficient business.
+
+== Enforcing a tolerable level of inefficiency
+
+To start to address this it's first important to find and validate the aforementioned pattern within an organisation.
+Common ways this is expressed is team members who work longer hours than normal, budgets becoming over budget or
+employees no longer taking the time for self development. The patterns that indicate an organisation is sacrificing
+longer term outcomes for short term efficiency are also the patterns that lead to "burn out".
+
+However, it is inherently difficult to pick out employees that are close to "burn out", or situations that are
+unsustainable. Teams that are highly efficient are sustainable by definition, until they either burn out or suffer
+disaster. Doing an analysis (post mortem) on team burnout or disaster may provide useful insights into whether a teams
+performance is too efficient but such disasters are enormously expensive.
+
+Accordingly, proxy measures of efficiency should be established. There are promising ways of evaluating psychological
+well being of team members, such as:
+
+- https://www.officevibe.com/[Automated surveys]
+- Scheduled 1 on 1s with team members
+- Agile retrospectives
+- Team activities
+
+Additionally, it may be worth establishing a pattern of deliberate inefficiency. Within Sitewards this has been
+implemented as an "improvement day" approximately 1x per month and there have been signs of it in other organisations
+such as Google's "20%" time.
+
+However, the implementation will vary on an organisational basis. It's perhaps most important to understand that
+pursuing maximal efficiency is a bit line pursuing 100% uptime: It works until it really doesn't.
+
+== Listening for "unknown unknowns"
+
+Psychological safety is not a derivative simply of a level of efficiency. It is the result of a much broader set of
+incentives within an organisation. Such incentives are often not deliberate, but rather simply an emergent property
+of how an organisation is structured.
+
+There are times when these incentives can adversely affect psychological safety. For example, a well intentioned member
+of an executive team may issue a directive that a certain process must be used when implementing a given solution. For
+example, that "Java" must be the language used to implement all future projects or that all services will be
+implemented on "bare metal", rather than on "the cloud". From the executives point of view, these
+decisions are defensible - Java as a language makes it much easier to hire future developers, and the executive
+understands that "bare metal" leaves the company in greater control of its data.
+
+However, by making such decisions the executive has violated established norms that have otherwise been established
+within the company. Such norm violation does not simply carry the consequence that the norms must be readjusted and
+that responsibilities have shifted, but additionally that the executive does not trust the implementing teams to make
+appropriate decisions about their technological stack or find new colleagues.
+
+Ironically, in environments of high psychological safety a team member would rapidly reach out to such an executive
+team member and query for additional information; perhaps informing them of their unintentioned message. However,
+the nature of social power means that such communication is inherently difficult for employees, and that such messages
+are extremely difficult to communicate back.
+
+There are a couple of ways that this feedback may come back:
+
+- The executive team may directly solicit feedback, in which case employees may feel safe to communicate how this
+  was received.
+- A limited number of employees will communicate it upstream regardless of personal consequences
+
+The latter set of employees is a significantly rare set. "Speaking up" is an inherently dangerous activity, and it
+is only if the user either feels safe due to circumstances outside the organisation such as having a large pool of
+savings to fall back on, or if the user feels so compelled by their moral compass they do it regardless of personal
+consequence, or a mixture of the above.
+
+However, within a position of power it is important to attempt both to listen for these warnings. They indicate issues
+that will otherwise go unexplained, instead resulting in employees silently leaving or otherwise compensating,
+negatively affecting business outcomes.
+
+Regardless of the specific circumstances, understanding and cultivating employees who do voice feedback that
+indicates there are structural problems may provide valuable insights of aspects of the business that are otherwise
+invisible. The nature of such employees is their actions give direction to their colleagues and can significantly
+influence company outcomes.
+
+== The flip side of a completely safe environment
+
+Lastly, it's worth determining whether psychological safety is a universally positive force. Psychological safety is
+the acceptance that a user can take a given amount of risk without fearing the consequence. However, there are areas
+in which it is not appropriate to take risks.
+
+For example, it may be that an employee considers that their gender makes them inherently better as a software
+developer, or that members of a given college are demonstrably superior in their assessments and thus have more say
+in company decisions.
+
+In each case, voicing those opinions either explicitly or tacitly has significant negative impacts on their team,
+presuming their team includes members of which that opinion reflects poorly. This damage may produce even further
+negative outcomes than would a discussion on the merits of those beliefs in a clear and open way; famously reflected
+in the case of James Damore at Google.
+
+It is also possible that within a company it is better to mitigate business risk, though the area in companies is
+certainly a lot greyer than the aforementioned sexist and elitest examples.
+
+It is perhaps most important to be deliberate in cultivating the "appropriate" amount of psychological safety; especially
+in determining what areas it is acceptable to be experimental and in what areas certain rules apply absolutely.
+In the cases where there are absolute rules it should be clearly communicated how and why such rules exist, and in
+what cases they should be revisited.
+
+== In Conclusion
+
+Our organisations are complex social affairs, full of an array of personal, team and corporate incentives and designs.
+However psychological safety is uniquely beneficial in that it allows the analysis and contribution of all team members
+to improve the businesses capability to solve the problem it is designed to solve. Some of the incentives that govern
+a business and are otherwise viewed as "good" may negatively affect psychological safety, and organisational leaders
+should thus be cognisant of these risks and manage them directly and explicitly. Team members who are able to voice
+concerns even though that puts them at personal risks provide a valuable additional lens through which to understand
+the organisation and should be looked after accordingly. However, just like efficiency psychological safety is not a
+universal good, and there are some areas of the business that may be unquestionable 
+
+If you made it this far, I hope you enjoyed the read!
+
